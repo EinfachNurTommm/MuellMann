@@ -23,7 +23,7 @@ public class PlaceEvent implements Listener {
         Inventory inv = p.getInventory();
         if(e.getBlock().getType().equals(Material.CAULDRON)) {
             if (p.getItemInHand().getType().equals(Material.CAULDRON_ITEM)) {
-                // Exception abfangen, da sonst in der Console eine IndexOutOfBounce-Exception kommt, da die Range von Click zu weit entfertn ist.
+                // Exception abfangen, da sonst in der Console eine IndexOutOfBounce-Exception kommt, da die Range von Click zu weit entfernt ist.
                 try {
                     if (p.getItemInHand().getItemMeta().getDisplayName().equalsIgnoreCase("§4Mülleimer")) {
                         plugin.myCM.setMuelleimer(e.getBlockPlaced().getLocation());

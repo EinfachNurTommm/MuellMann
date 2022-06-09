@@ -13,7 +13,13 @@ public class SellInventory {
         this.plugin=plugin;
     }
 
-    public Inventory sellInv(Player p) {
+
+    /**
+     * Liefert ein verkaufs Inventar
+     * @param p
+     * @return Inventory
+     */
+    public Inventory getSellInv(Player p) {
         Inventory inv;
         inv = Bukkit.getServer().createInventory(null, plugin.invSize, plugin.sellInvName);
 

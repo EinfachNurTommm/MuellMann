@@ -25,6 +25,7 @@ public class InvClickEvent implements Listener {
     public void onInvClick(InventoryClickEvent e) {
         Player p = (Player) e.getWhoClicked();
 
+        // Prüfen ob der Klick im Inventar war
         if(e.getSlot() !=-999) {
             if(p.getOpenInventory().getTopInventory().getName() == plugin.sellInvName) {
                 if(e.getCurrentItem().hasItemMeta() || e.getCurrentItem().getType().equals(Material.AIR)) {
@@ -43,7 +44,6 @@ public class InvClickEvent implements Listener {
                         List<Integer> slotList = new ArrayList<Integer>();
 
                         for(int i = 0; i<plugin.invSize; i++) {
-                            //System.out.println("Slot " + i + ": " + openInv.getItem(i));
                             if(openInv.getItem(i) != null) {
                                 if(openInv.getItem(i).getType().equals(Material.STONE_SWORD)) {
                                     if(openInv.getItem(i).getItemMeta().getDisplayName().equalsIgnoreCase(plugin.muellsackName)) {
@@ -53,6 +53,7 @@ public class InvClickEvent implements Listener {
                             }
                         }
 
+                        // Wenn Rote Glasscheibe geklickt wird und der Displayname stimmt, werden die Items aus dem Sell Inventar zurück gegeben.
                         if(e.getCurrentItem().getDurability() == 14 && e.getCurrentItem().getItemMeta().getDisplayName().equals(plugin.cancel)) {
                             for(int i = 0; i<slotList.size(); i++) {
                                 p.getInventory().addItem(plugin.buildIS(Material.STONE_SWORD, "§6Müllsack", 1, 1));
@@ -62,6 +63,7 @@ public class InvClickEvent implements Listener {
                             p.closeInventory();
                             return;
 
+                        // Wenn Grüne Glasscheibe geklickt wird und der Displayname stimmt, wird das Inventar geschlossen und man bekommt Geld pro verbrannten Sack
                         } else if(e.getCurrentItem().getDurability() == 5 && e.getCurrentItem().getItemMeta().getDisplayName().equals(plugin.sell)) {
                             int muellsaecke = slotList.size();
                             int myMoney = muellsaecke*plugin.money;

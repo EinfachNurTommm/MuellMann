@@ -16,14 +16,17 @@ public class ConfigMethods {
     }
 
 
-    // Mülleimer hinzufügen
+    /**
+     * Zum setzten der Location eines Mülleimers
+     * @param loc
+     */
     public void setMuelleimer(Location loc) { // - world,-253,71,-128
         List<String> locList = plugin.cfg.getStringList("Muelleimer" + ".Locations");
 
-        //prüfen ob schon ein Mülleimer mit dieser Location in der Config ist
+        //prüfen, ob schon ein Mülleimer mit dieser Location in der Config ist
         if(!getMuelleimer().contains(loc)) {
 
-            //Die Location in einen String umwalndeln, um es nachher besser auslesen zu können
+            //Die Location in einen String umwandeln, um es nachher besser auslesen zu können
             String s = loc.getWorld().getName() + "," + loc.getX() + "," + loc.getY() + "," + loc.getZ();
 
             // String zu einer StringList hinzufügen
@@ -35,16 +38,19 @@ public class ConfigMethods {
         }
     }
 
-    //Mülleimer abrufen
+    /**
+     * Zum Bekommen einer Location Liste mit allen Mülleimern
+     * @return List<Location>
+     */
     public List<Location> getMuelleimer() {
         List<Location> locList = new ArrayList<Location>();
         List<String> locStringList = plugin.cfg.getStringList("Muelleimer" + ".Locations");
 
         //Durch die Liste der Mülleimer aus der Config durchgehen
 
-        for(int i = 0; i <= locStringList.size()-1; i++) {
-            //Den eintrag von i nehemn und bei jedem Komma splitten
-            //Da immer gleichviele Kommas in einer Zeile sind kann man world, x, y, z bestimmen
+        for(int i = 0; i < locStringList.size(); i++) {
+            //Den eintrag von i nehmen und bei jedem Komma splitten
+            //Da immer gleich viele Kommas in einer Zeile sind kann man world, x, y, z bestimmen
             String s = locStringList.get(i);
             String[] split = s.split(",");
             String world = split[0];
@@ -63,7 +69,10 @@ public class ConfigMethods {
         return locList;
     }
 
-    //Mülleimer entfernen
+    /**
+     * Zum Entfernen eines bereits platzierten Mülleimers
+     * @param loc
+     */
     public void removeMuelleimer(Location loc) {
         List<Location> locList = new ArrayList<Location>();
         List<String> newLocList = new ArrayList<String>();

@@ -8,8 +8,6 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 
-import java.util.Locale;
-
 public class Commands implements CommandExecutor {
 
     public Main plugin;
@@ -17,6 +15,7 @@ public class Commands implements CommandExecutor {
     public Commands(Main main) {
         this.plugin = main;
     }
+
 
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String cmdlabel, String[] args) {
@@ -28,9 +27,9 @@ public class Commands implements CommandExecutor {
                     inv.addItem(plugin.buildIS(Material.CAULDRON_ITEM, "§4Mülleimer", 1, 0));
                     p.sendMessage("Du hast einen Mülleimer bekommen!");
 
-                    // Commands um die sachen zu bekommen, die man normalerweise durch andere Dinge bekommen soll (Shops, NPCs usw.)
+                    // Commands um die Sachen zu bekommen, die man normalerweise in Shops oder von NPCs bekommt.
                 } else if(args[0].toString().equalsIgnoreCase("verbrennung")) {
-                    p.openInventory(plugin.mySellInv.sellInv(p));
+                    p.openInventory(plugin.mySellInv.getSellInv(p));
 
                 } else if(args[0].toString().equalsIgnoreCase("gettuete") || args[0].toString().equalsIgnoreCase("gettüte")) {
                     inv.addItem(plugin.buildIS(Material.WOOD_SWORD, plugin.muelltueteName, 1, 0));
@@ -52,7 +51,7 @@ public class Commands implements CommandExecutor {
     }
 
 
-    public void sendHelp(Player p) {
+    private void sendHelp(Player p) {
         p.sendMessage("                 §3----------§r§cMüllmann§3----------");
         p.sendMessage("§6/mm getMuelleimer §c- §bUm einen Mülleimer zu bekommen!");
         p.sendMessage("§6/mm verbrennung §c- §bUm das Inventar für die Müllverbrennen zu öffnen!");

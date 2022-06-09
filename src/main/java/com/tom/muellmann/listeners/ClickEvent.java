@@ -31,7 +31,7 @@ public class ClickEvent implements Listener {
         // PlayerStatus bekommen um später vom spieler Informationen zu bekommen
         PlayerStatus ps =  PlayerStatus.getInstanceOfPlayer(p);
 
-        // spam nutzen, da sonst das event zwei mal aufgerufen wird (wegen off und mainhand)
+        // spam nutzen, da sonst das event zweimal aufgerufen wird (wegen off und mainhand)
         if(spam != 0) {
             spam = 0;
             return;
@@ -40,7 +40,7 @@ public class ClickEvent implements Listener {
 
         if(e.getAction() == Action.RIGHT_CLICK_BLOCK) {
             if(e.getClickedBlock().getType().equals(Material.CAULDRON)) {
-                if(plugin.myCM.getMuelleimer().contains(e.getClickedBlock().getLocation())) { //Ob der Cauldron als Mülleimer registriert is
+                if(plugin.myCM.getMuelleimer().contains(e.getClickedBlock().getLocation())) { //Ob der Cauldron als Mülleimer registriert ist
                     if(!ps.getUsedMuelleimer().contains(e.getClickedBlock().getLocation())) { // Ob man den Mülleimer noch nicht eingesammelt hat
                         if(p.getItemInHand().getType().equals(Material.WOOD_SWORD) && p.getItemInHand().getDurability() < 10) {
                             if(p.getItemInHand().getItemMeta().getDisplayName() == plugin.muelltueteName) {

@@ -24,6 +24,7 @@ public class InvCloseEvent implements Listener {
         Inventory inv = e.getInventory();
 
         if (e.getInventory().getTitle().equals(plugin.sellInvName)) {
+            // Abfragen, ob das Inventar geschlossen werden darf
             if(!plugin.canClose.get(p)) {
                 new BukkitRunnable() {
                     @Override

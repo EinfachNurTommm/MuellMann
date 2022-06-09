@@ -16,6 +16,7 @@ import java.util.List;
 public final class Main extends JavaPlugin {
 
     public FileConfiguration cfg = getConfig();
+
     public ConfigMethods myCM = new ConfigMethods(this);
     public SellInventory mySellInv = new SellInventory(this);
 
@@ -27,7 +28,6 @@ public final class Main extends JavaPlugin {
     public String cancel = "§cAbbrechen";
     public String sell = "§aVerkaufen";
     public int money = 10;
-
 
     public HashMap<Player, Boolean> canClose = new HashMap<>();
 
@@ -57,7 +57,14 @@ public final class Main extends JavaPlugin {
         new InvCloseEvent(this);
     }
 
-
+    /**
+     * Erstellt einen ItemStack, welcher in ein Inventar gesetzt werden kann
+     * @param mat
+     * @param name
+     * @param amount
+     * @param s
+     * @return
+     */
     public ItemStack buildIS(Material mat, String name, int amount, int s){
         ItemStack is = new ItemStack(mat, amount, (byte)s);
         ItemMeta im = is.getItemMeta();

@@ -22,15 +22,17 @@ public class PlayerStatus {
         newplayer.put(player.getName(), this);
     }
 
-    // Return a running instance (or create a new one)
+    /**
+     * Zum Erstellen oder wiedergeben einer vorhandenen Instanz
+     * @param player
+     * @return
+     */
     public static PlayerStatus getInstanceOfPlayer(Player player) {
         if(!newplayer.containsKey(player.getName())) {
             return new PlayerStatus(player);
         }
         else if(newplayer.containsKey(player.getName())) {
             return newplayer.get(player.getName());
-        } else {
-
         }
         return null;
     }
@@ -41,6 +43,11 @@ public class PlayerStatus {
         return true;
     }
 
+    /**
+     * Zum Hinzufügen eines benutzten Mülleimers
+     * @param loc
+     * @return
+     */
     public boolean addUsedMuelleimer(Location loc) {
         List<Location> locList = usedMuelleimer;
         locList.add(loc);
@@ -48,6 +55,10 @@ public class PlayerStatus {
         return true;
     }
 
+    /**
+     * Liefert alle benutzten Mülleimer
+     * @return List<Location>
+     */
     public List<Location> getUsedMuelleimer() {
         return usedMuelleimer;
     }

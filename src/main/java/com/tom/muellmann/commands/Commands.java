@@ -23,18 +23,18 @@ public class Commands implements CommandExecutor {
             Player p = (Player) sender;
             Inventory inv = p.getInventory();
             if(args.length == 1) {
-                if(args[0].toString().equalsIgnoreCase("getMuelleimer") || args[0].toString().equalsIgnoreCase("getMülleimer")) {
+                if(args[0].equalsIgnoreCase("getMuelleimer") || args[0].equalsIgnoreCase("getMülleimer")) {
                     inv.addItem(plugin.buildIS(Material.CAULDRON_ITEM, "§4Mülleimer", 1, 0));
                     p.sendMessage("Du hast einen Mülleimer bekommen!");
 
                     // Commands um die Sachen zu bekommen, die man normalerweise in Shops oder von NPCs bekommt.
-                } else if(args[0].toString().equalsIgnoreCase("verbrennung")) {
+                } else if(args[0].equalsIgnoreCase("verbrennung")) {
                     p.openInventory(plugin.mySellInv.getSellInv(p));
 
-                } else if(args[0].toString().equalsIgnoreCase("gettuete") || args[0].toString().equalsIgnoreCase("gettüte")) {
+                } else if(args[0].equalsIgnoreCase("gettuete") || args[0].equalsIgnoreCase("gettüte")) {
                     inv.addItem(plugin.buildIS(Material.WOOD_SWORD, plugin.muelltueteName, 1, 0));
 
-                } else if(args[0].toString().equalsIgnoreCase("help")) {
+                } else if(args[0].equalsIgnoreCase("help")) {
                     sendHelp(p);
 
                 } else {

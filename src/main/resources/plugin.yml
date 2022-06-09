@@ -1,0 +1,14 @@
+name: Muellmann
+version: '${project.version}'
+main: com.tom.muellmann.Main
+authors: [ EinfachNurTommm ]
+description: MuellMann Job
+commands:
+  muellmann:
+    permission: muellmann.all
+
+  müllmann:
+    permission: muellmann.all
+
+  mm:
+    permission: muellmann.all
